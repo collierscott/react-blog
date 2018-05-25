@@ -27,6 +27,7 @@ class Blog extends Component {
                 this.setState({posts: updatedPosts});
             })
             .catch(error => {
+                // Errors here are like no internet connection and stuff
                 console.log(error);
                 this.setState({error: true});
             });
