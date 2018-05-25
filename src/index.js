@@ -26,5 +26,11 @@ axios.interceptors.response.use(response => {
     return Promise.reject(error);
 });
 
+// Store the reference to the interceptor in a variable and call eject
+// with that reference as an argument, to remove it
+//let myInterceptor = axios.interceptors.request.use(function () {/*...*/});
+//axios.interceptors.request.eject(myInterceptor);
+
+
 ReactDOM.render( <App />, document.getElementById( 'root' ) );
 registerServiceWorker();
