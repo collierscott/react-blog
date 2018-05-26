@@ -4,32 +4,37 @@ import './FullPost.css';
 
 class FullPost extends Component {
     state = {
-        post: null
+        post: null,
+        error: false
     };
+
     componentDidMount () {
         let id = this.props.match.params.id;
+
         if (id) {
             if(!this.state.post || (this.state.post && this.state.post.id !== this.props.id)) {
                 axios.get('/posts/' + id)
                     .then(response => {
                         this.setState({post: response.data});
+                    }).catch( error => {
+                        this.setState({error: true});
                     });
             }
         }
     }
 
     deletePostHandler = () => {
-        axios.delete('/posts/' + this.props.id)
+        axios.delete('/posts/' + this.props.match.params.id)
             .then(response => {
                 console.log(response);
             });
     };
 
     render () {
-        let post = <p style={{textAlign: 'center'}}>The post was not found.</p>;
+        let post = <p style={{textAlign: 'center'}}>Loading...</p>;
 
-        if(this.props.id) {
-            post = <p style={{textAlign: 'center'}}>Loading...</p>;
+        if(this.state.error) {
+            post = <p style={{textAlign: 'center'}}>The post was not found.</p>;
         }
 
         if(this.state.post) {
