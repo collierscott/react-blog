@@ -43,7 +43,9 @@ class Blog extends Component {
                     {this.authorized ? <Route path="/admin" component={NewPost} /> : null}
                     <Route path="/new-post" component={NewPost} />
                     <Route path="/posts" component={Posts} />
-                    <Redirect from="/" to="/posts"/>
+                    <Route path="/" exact component={Posts} />
+                    <Route render={() => <h1>Page not found</h1>} />
+                    {/* <Redirect from="/" to="/posts"/> */}
                     {/* <Route path="/post/:id" exact component={FullPost} /> */}
                 </Switch>
             </div>
