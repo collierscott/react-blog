@@ -10,7 +10,8 @@
 }
 
 .Post:hover,
-.Post:active {
+.Post:active,
+.Post.active {
     background-color: #C0DDF5;
 }
 
