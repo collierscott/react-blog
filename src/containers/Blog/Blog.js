@@ -7,7 +7,13 @@ import NewPost from './NewPost/NewPost';
 import './Blog.css';
 
 class Blog extends Component {
+    state = {
+        auth: false
+    }
+
     render () {
+        let authorized = this.state.auth;
+
         return (
             <div className="Blog">
                 <header>
@@ -33,8 +39,8 @@ class Blog extends Component {
                     <NewPost />
                 </section> */}
                 {/* <Route path="/" exact render={ () => <h1>Home</h1> */}
-                
                 <Switch>
+                    {this.authorized ? <Route path="/admin" component={NewPost} /> : null}
                     <Route path="/new-post" component={NewPost} />
                     <Route path="/posts" component={Posts} />
                     <Redirect from="/" to="/posts"/>

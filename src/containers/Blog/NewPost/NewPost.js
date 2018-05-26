@@ -22,7 +22,7 @@ class NewPost extends Component {
             .then(response => {
                 console.log(response);
                 // Push adds button to stack so back button works.
-                //this.props.history.push('/posts');
+                // this.props.history.push('/posts');
                 // Redirect replaces current page on the stack
                 // this.props.history.redirect('/posts'); does same as Redirect
                 this.setState({submitted: true});
