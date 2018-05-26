@@ -32,15 +32,8 @@ class Blog extends Component {
                         </ul>
                     </nav>
                 </header>
-                {/* <section>
-                    <FullPost id={this.state.selectedPostId} />
-                </section>
-                <section>
-                    <NewPost />
-                </section> */}
-                {/* <Route path="/" exact render={ () => <h1>Home</h1> */}
                 <Switch>
-                    {this.authorized ? <Route path="/admin" component={NewPost} /> : null}
+                    {authorized ? <Route path="/admin" component={NewPost} /> : null}
                     <Route path="/new-post" component={NewPost} />
                     <Route path="/posts" component={Posts} />
                     <Route path="/" exact component={Posts} />
