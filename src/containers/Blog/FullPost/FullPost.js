@@ -6,10 +6,11 @@ class FullPost extends Component {
     state = {
         post: null
     };
-    componentDidUpdate () {
-        if (this.props.id) {
+    componentDidMount () {
+        let id = this.props.match.params.id;
+        if (id) {
             if(!this.state.post || (this.state.post && this.state.post.id !== this.props.id)) {
-                axios.get('/posts/' + this.props.id)
+                axios.get('/posts/' + id)
                     .then(response => {
                         this.setState({post: response.data});
                     });
@@ -25,7 +26,7 @@ class FullPost extends Component {
     };
 
     render () {
-        let post = <p style={{textAlign: 'center'}}>Please select a Post!</p>;
+        let post = <p style={{textAlign: 'center'}}>The post was not found.</p>;
 
         if(this.props.id) {
             post = <p style={{textAlign: 'center'}}>Loading...</p>;
