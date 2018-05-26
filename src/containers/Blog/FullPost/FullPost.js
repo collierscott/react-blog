@@ -17,6 +17,7 @@ class FullPost extends Component {
     }
 
     loadData() {
+        // id is a string, so need to convert to a number
         let id = this.props.match.params.id;
 
         if (id) {
